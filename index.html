@@ -11,7 +11,7 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="navbar-brand">
                 <h1>🎭 Ulrichb-officiel</h1>
             </div>
@@ -19,8 +19,10 @@
                 <li><a href="index.html" class="active">Accueil</a></li>
                 <li><a href="pages/conseils.html">Conseils</a></li>
                 <li><a href="pages/ressources.html">Ressources</a></li>
+                <li><a href="pages/videos.html">Vidéos</a></li>
                 <li><a href="pages/contact.html">Contact</a></li>
             </ul>
+            <div id="auth-btn"></div>
         </div>
     </nav>
 
@@ -43,14 +45,14 @@
                 <p>Découvrez des techniques éprouvées pour améliorer votre présence sur scène et votre sens de l'humour.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎬</div>
-                <h3>Ressources</h3>
-                <p>Accédez à des tutoriels, vidéos et références pour progresser dans votre parcours comique.</p>
+                <div class="feature-icon">📹</div>
+                <h3>Vidéos Tutorielles</h3>
+                <p>Regardez nos vidéos de haute qualité et apprenez directement des experts en comédie.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3>Communauté</h3>
-                <p>Connectez-vous avec d'autres passionnés et partagez vos expériences et vos créations.</p>
+                <div class="feature-icon">📖</div>
+                <h3>Ressources</h3>
+                <p>Accédez à des ressources, références et inspirations pour progresser dans votre parcours comique.</p>
             </div>
         </section>
 
@@ -78,9 +80,333 @@
         <div class="container">
             <p>&copy; 2026 Ulrichb-officiel. Tous droits réservés.</p>
             <p>Créé avec ❤️ par Ulrich B.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                <a href="pages/politique-confidentialite.html" style="color: inherit; text-decoration: none;">Politique de confidentialité</a> | 
+                <a href="pages/contact.html" style="color: inherit; text-decoration: none;">Contact</a>
+            </p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/cookies.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/videos.js"></script>
+
+    <!-- Modal d'authentification -->
+    <div id="auth-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Authentification</h2>
+                <button class="close-btn" onclick="closeAuthModal()">×</button>
+            </div>
+
+            <div id="auth-error" class="error-message"></div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Connexion</button>
+                <button class="tab-btn" onclick="switchTab('signup')">Inscription</button>
+            </div>
+
+            <div id="login-tab" class="tab-content active">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember" checked>
+                        <label for="remember">Se souvenir de moi</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </form>
+            </div>
+
+            <div id="signup-tab" class="tab-content">
+                <form onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="signup-nom">Nom complet</label>
+                        <input type="text" id="signup-nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Mot de passe</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password-confirm">Confirmer le mot de passe</label>
+                        <input type="password" id="signup-password-confirm" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agree-terms" required>
+                        <label for="agree-terms">
+                            J'accepte les <a href="pages/politique-confidentialite.html" target="_blank">conditions d'utilisation</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--light-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a38a0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--light-color);
+            background: none;
+            color: var(--dark-color);
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+    </style>
+
+    <script>
+        function openAuthModal() {
+            document.getElementById('auth-modal').classList.add('active');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.remove('active');
+            clearAuthError();
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tab + '-tab').classList.add('active');
+            event.target.classList.add('active');
+            clearAuthError();
+        }
+
+        function showAuthError(message) {
+            const errorDiv = document.getElementById('auth-error');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        function clearAuthError() {
+            const errorDiv = document.getElementById('auth-error');
+            errorDiv.classList.remove('show');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const user = {
+                    email: email,
+                    nom: email.split('@')[0]
+                };
+                localStorage.setItem('ulrichb_user', JSON.stringify(user));
+                
+                notificationManager.success('✅ Connexion réussie ! Bienvenue.');
+                closeAuthModal();
+                setTimeout(() => location.reload(), 1000);
+            } catch (error) {
+                showAuthError('❌ ' + error.message);
+            }
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const nom = document.getElementById('signup-nom').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const passwordConfirm = document.getElementById('signup-password-confirm').value;
+
+            if (password !== passwordConfirm) {
+                showAuthError('❌ Les mots de passe ne correspondent pas');
+                return;
+            }
+
+            try {
+                const user = {
+                    email: email,
+                    nom: nom,
+                    createdAt: new Date().toISOString()
+                };
+                localStorage.setItem('ulrichb_user', JSON.stringify(user));
+                
+                notificationManager.success('✅ Inscription réussie ! Bienvenue.');
+                closeAuthModal();
+                setTimeout(() => location.reload(), 1000);
+            } catch (error) {
+                showAuthError('❌ ' + error.message);
+            }
+        }
+
+        document.getElementById('auth-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('auth-modal')) {
+                closeAuthModal();
+            }
+        });
+    </script>
 </body>
 </html>
