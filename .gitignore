@@ -1,0 +1,50 @@
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE et éditeurs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Node.js et npm
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build et distribution
+dist/
+build/
+.cache/
+
+# Fichiers de configuration locaux
+.env
+.env.local
+.env.*.local
+
+# Fichiers temporaires
+*.tmp
+*.temp
+.temp/
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Logs
+*.log
+logs/
+
+# Fichiers OS
+.AppleDouble
+.LSOverride
+._*
