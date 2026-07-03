@@ -1,0 +1,38 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Débuter au stand-up comedy",
+      "description": "Guide complet pour vos premières apparitions sur scène",
+      "category": "Tutoriel",
+      "youtubeId": "dQw4w9WgXcQ",
+      "duration": "15:42",
+      "views": 1500
+    },
+    {
+      "id": 2,
+      "title": "Maîtriser les jeux de rôle",
+      "description": "Techniques avancées pour créer et incarner différents personnages",
+      "category": "Technique",
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": "22:15",
+      "views": 890
+    },
+    {
+      "id": 3,
+      "title": "L'improvisation comique",
+      "description": "Explorez l'art de l'improvisation et du théâtre d'improvisation",
+      "category": "Performance",
+      "youtubeId": "9bZkp7q19f0",
+      "duration": "18:30",
+      "views": 650
+    }
+  ],
+  "categories": [
+    "Tutoriel",
+    "Technique",
+    "Performance",
+    "Inspiration"
+  ],
+  "lastUpdated": "2026-07-03T13:40:00Z"
+}
