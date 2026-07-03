@@ -56,19 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
    FONCTIONS PRINCIPALES
    ============================================ */
 
-/**
- * Initialise l'application
- */
 function initializeApp() {
     console.log('🎭 Ulrichb-officiel initialisé');
     setupEventListeners();
 }
 
-/**
- * Configure les écouteurs d'événements
- */
 function setupEventListeners() {
-    // Smooth scroll pour les liens d'ancrage
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -79,7 +72,6 @@ function setupEventListeners() {
         });
     });
 
-    // Fermer le menu mobile au clic
     const navLinks = document.querySelectorAll('.navbar-menu a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -88,9 +80,6 @@ function setupEventListeners() {
     });
 }
 
-/**
- * Charge et affiche les conseils de comédie
- */
 function loadComedyTips() {
     const tipsContainer = document.getElementById('tips-container');
     
@@ -104,11 +93,6 @@ function loadComedyTips() {
     });
 }
 
-/**
- * Crée une carte de conseil
- * @param {Object} tip - L'objet conseil
- * @returns {HTMLElement} - L'élément HTML de la carte
- */
 function createTipCard(tip) {
     const card = document.createElement('div');
     card.className = 'tip-card';
@@ -118,7 +102,6 @@ function createTipCard(tip) {
         <span class="tip-category">${escapeHtml(tip.category)}</span>
     `;
     
-    // Ajouter une animation au survol
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-5px)';
     });
@@ -130,9 +113,6 @@ function createTipCard(tip) {
     return card;
 }
 
-/**
- * Définit le lien actif dans la navigation
- */
 function setActiveNavLink() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
@@ -146,11 +126,6 @@ function setActiveNavLink() {
     });
 }
 
-/**
- * Échappe les caractères HTML pour la sécurité
- * @param {string} text - Le texte à échapper
- * @returns {string} - Le texte échappé
- */
 function escapeHtml(text) {
     const map = {
         '&': '&amp;',
@@ -162,20 +137,10 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, m => map[m]);
 }
 
-/**
- * Filtre les conseils par catégorie
- * @param {string} category - La catégorie à filtrer
- * @returns {Array} - Les conseils filtrés
- */
 function filterTipsByCategory(category) {
     return comedyTips.filter(tip => tip.category === category);
 }
 
-/**
- * Recherche parmi les conseils
- * @param {string} query - La requête de recherche
- * @returns {Array} - Les conseils correspondants
- */
 function searchTips(query) {
     const lowerQuery = query.toLowerCase();
     return comedyTips.filter(tip => 
@@ -185,18 +150,10 @@ function searchTips(query) {
     );
 }
 
-/**
- * Exporte les données en JSON
- * @returns {string} - Les données au format JSON
- */
 function exportTipsAsJSON() {
     return JSON.stringify(comedyTips, null, 2);
 }
 
-/**
- * Ajoute un nouveau conseil (exemple)
- * @param {Object} newTip - Le nouveau conseil
- */
 function addNewTip(newTip) {
     const maxId = Math.max(...comedyTips.map(t => t.id), 0);
     newTip.id = maxId + 1;
@@ -205,9 +162,6 @@ function addNewTip(newTip) {
     loadComedyTips();
 }
 
-/**
- * Utilitaires de console pour développement
- */
 window.ComedyUtils = {
     tips: comedyTips,
     filter: filterTipsByCategory,

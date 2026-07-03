@@ -4,20 +4,76 @@
       "id": 1,
       "title": "Le timing est tout",
       "description": "Maîtrisez l'art de la pause. C'est souvent l'absence de paroles qui fait rire, pas les paroles elles-mêmes.",
-      "category": "Technique"
+      "category": "Technique",
+      "tips": [
+        "Pratiquez les pauses pour créer du suspense",
+        "Laissez le temps au public de rire",
+        "Utilisez le silence pour renforcer l'impact"
+      ]
     },
     {
       "id": 2,
       "title": "Observez la vie quotidienne",
-      "description": "Les meilleures blagues viennent de l'observation des situations banales.",
-      "category": "Inspiration"
+      "description": "Les meilleures blagues viennent de l'observation des situations banales. Développez votre capacité à voir l'humour partout.",
+      "category": "Inspiration",
+      "tips": [
+        "Tenez un carnet pour noter les observations amusantes",
+        "Écoutez les conversations des autres",
+        "Remarquez les absurdités du quotidien"
+      ]
     },
     {
       "id": 3,
       "title": "Connectez-vous avec votre audience",
-      "description": "Faites du contact visuel et reconnaissez votre audience.",
-      "category": "Scène"
+      "description": "Faites du contact visuel, reconnaissez votre audience. L'humour est une conversation, pas une conférence.",
+      "category": "Scène",
+      "tips": [
+        "Établissez le contact visuel avec le public",
+        "Improvisez avec le public quand possible",
+        "Créez une atmosphère d'intimité"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Écrivez régulièrement",
+      "description": "La comédie, c'est du travail. Écrivez chaque jour, même si ce n'est que quelques lignes.",
+      "category": "Écriture",
+      "tips": [
+        "Consacrez du temps à l'écriture chaque jour",
+        "Révisez et améliorez vos blagues",
+        "Testez de nouveau matériel régulièrement"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Testez vos blagues",
+      "description": "Ce qui vous fait rire ne fera pas toujours rire les autres. Testez, ajustez, perfectionnez.",
+      "category": "Développement",
+      "tips": [
+        "Participez à des open mics",
+        "Sollicitez des feedbacks constructifs",
+        "Soyez prêt à modifier votre matériel"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Connaissez votre personnage",
+      "description": "Développez une persona sur scène. Cela vous rend unique et mémorable.",
+      "category": "Performance",
+      "tips": [
+        "Définissez votre style comique unique",
+        "Soyez authentique dans votre approche",
+        "Développez une signature comique"
+      ]
     }
+  ],
+  "categories": [
+    "Technique",
+    "Inspiration",
+    "Scène",
+    "Écriture",
+    "Développement",
+    "Performance"
   ],
   "lastUpdated": "2026-07-03T12:00:00Z"
 }
