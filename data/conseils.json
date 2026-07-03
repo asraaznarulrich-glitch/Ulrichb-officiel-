@@ -1,0 +1,23 @@
+{
+  "conseils": [
+    {
+      "id": 1,
+      "title": "Le timing est tout",
+      "description": "Maîtrisez l'art de la pause. C'est souvent l'absence de paroles qui fait rire, pas les paroles elles-mêmes.",
+      "category": "Technique"
+    },
+    {
+      "id": 2,
+      "title": "Observez la vie quotidienne",
+      "description": "Les meilleures blagues viennent de l'observation des situations banales.",
+      "category": "Inspiration"
+    },
+    {
+      "id": 3,
+      "title": "Connectez-vous avec votre audience",
+      "description": "Faites du contact visuel et reconnaissez votre audience.",
+      "category": "Scène"
+    }
+  ],
+  "lastUpdated": "2026-07-03T12:00:00Z"
+}
